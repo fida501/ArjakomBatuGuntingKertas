@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1717226700 source:c:\users\fida\documents\tugas pemrograman\codeblock c++ 22 september 2022\servercoba\main.cpp
+	<iostream>
+	<winsock2.h>
+	<ws2tcpip.h>
+
+1717505604 source:c:\pertugasan\arjakopm\socket programming\servercoba\main.cpp
+	<iostream>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<thread>
+
+1717248375 source:c:\pertugasan\arjakopm\socket programming\servercoba\src\guntingbatukertas.cpp
+	"GuntingBatuKertas.h"
+
+1717248513 c:\pertugasan\arjakopm\socket programming\servercoba\include\guntingbatukertas.h
+
+1717302617 source:c:\pertugasan\arjakopm\socket programming\servercoba\src\player.cpp
+	"Player.h"
+
+1717302624 c:\pertugasan\arjakopm\socket programming\servercoba\include\player.h
+	<string>
+

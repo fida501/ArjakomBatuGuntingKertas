@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1717505397 source:c:\pertugasan\arjakopm\socket programming\clientcoba\main.cpp
+	<iostream>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<limits>
+
