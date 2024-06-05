@@ -19,25 +19,34 @@ int player2Answer;
 std::string player1Name;
 std::string player2Name;
 
-void receiveData(SOCKET client_socket, char* buffer, size_t bufferSize) {
+void receiveData(SOCKET client_socket, char* buffer, size_t bufferSize)
+{
     int valread = recv(client_socket, buffer, bufferSize, 0);
-    if (valread == SOCKET_ERROR) {
+    if (valread == SOCKET_ERROR)
+    {
         std::cerr << "Recv error: " << WSAGetLastError() << std::endl;
-    } else {
+    }
+    else
+    {
         buffer[valread] = '\0';
         cout << "Received data are = " << buffer << std::endl;
     }
 }
 
-void sendData(SOCKET client_socket, const char* message) {
-    if (send(client_socket, message, strlen(message), 0) == SOCKET_ERROR) {
+void sendData(SOCKET client_socket, const char* message)
+{
+    if (send(client_socket, message, strlen(message), 0) == SOCKET_ERROR)
+    {
         std::cerr << "Send error: " << WSAGetLastError() << std::endl;
-    } else {
+    }
+    else
+    {
         cout << "Data sent to the client " << endl;
     }
 }
 
-void HandleClient(SOCKET client_socket, int& playerAnswer){
+void HandleClient(SOCKET client_socket, int& playerAnswer)
+{
     char buffer[200];
     const char *request = "";
     request = "Masukkan Jawaban yang anda inginkan \n 1 Untuk Gunting \n 2 untuk kertas \n 3 untuk batu \n Jawab :";
@@ -46,24 +55,31 @@ void HandleClient(SOCKET client_socket, int& playerAnswer){
     playerAnswer = atoi(buffer);
 }
 
-SOCKET AcceptConnection(SOCKET socket){
+SOCKET AcceptConnection(SOCKET socket)
+{
     SOCKET newSocket = accept(socket, NULL, NULL);
-        if (newSocket == INVALID_SOCKET) {
+    if (newSocket == INVALID_SOCKET)
+    {
         std::cerr << "Accept failed: " << WSAGetLastError() << std::endl;
         exit(EXIT_FAILURE);
     }
     return newSocket;
 }
 
-std::string DetermineWinner(int answer1, int answer2){
-    if(answer1 == answer2){
-            return "GAME IS DRAW \n";
+std::string DetermineWinner(int answer1, int answer2)
+{
+    if(answer1 == answer2)
+    {
+        return "GAME IS DRAW \n";
     }
     if ((answer1 == 1 && answer2 == 2) || // Scissors cut paper
-        (answer1 == 2 && answer2 == 3) || // Paper covers rock
-        (answer1 == 3 && answer2 == 1)) { // Rock crushes scissors
+            (answer1 == 2 && answer2 == 3) || // Paper covers rock
+            (answer1 == 3 && answer2 == 1))   // Rock crushes scissors
+    {
         return "Player 1 wins! \n";
-    } else {
+    }
+    else
+    {
         return "Player 2 wins! \n";
     }
 }
@@ -194,7 +210,8 @@ bool sendMessage(SOCKET clientSocket, const char* message)
 
 int main()
 {
-    const char* ipAddress = "127.0.0.1";
+    const char* ipAddress = "10.252.130.182";
+    string ipString;
     int port = 55555;
 
     while(true)
@@ -207,11 +224,13 @@ int main()
         cout << "Silahkan masukkan perintah yang ingin anda lakukan : ";
         int serverConsoleCommand;
         cin >> serverConsoleCommand;
-
         switch (serverConsoleCommand)
         {
         case 1:
-            cout << "Server dimulai dengan IP 127.0.0.1 dan port 55555" << endl;
+            cout << "Masukkan Ip Address : ";
+            cin >> ipString;
+            ipAddress = ipString.c_str();
+            cout << "Server dimulai dengan ip : " << ipAddress <<endl;
             ServerStart(ipAddress, port);
             break;
         case 2:
