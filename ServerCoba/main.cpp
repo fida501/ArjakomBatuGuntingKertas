@@ -178,6 +178,7 @@ bool ServerStart(const char* ipAddress, int port)
     result = DetermineWinner(player1Answer, player2Answer);
     sendData(player1Socket, result.c_str());
     sendData(player2Socket, result.c_str());
+
 //    return true;
 }
 
@@ -220,7 +221,8 @@ int main()
         cout << "Berikut adalah perintah yang bisa anda lakukan ! " << endl;
         cout << "1. Mulai Server" << endl;
         cout << "2. Stop Server"<< endl;
-        cout << "3. Keluar"<< endl;
+        cout << "3. Bersihkan Console"<< endl;
+        cout << "4. Keluar"<< endl;
         cout << "Silahkan masukkan perintah yang ingin anda lakukan : ";
         int serverConsoleCommand;
         cin >> serverConsoleCommand;
@@ -237,6 +239,9 @@ int main()
             cout << "Anda memilih Perintah nomor 2" << endl;
             break;
         case 3:
+            system("cls");
+            break;
+        case 4:
             cout << "Anda memilih perintah nomor 3" << endl;
             cout << "Terima kasih sudah berbelanja di indomaret" << endl;
             return 0;

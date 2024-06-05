@@ -5,24 +5,31 @@
 using namespace std;
 
 
-void receiveData(SOCKET sock, char* buffer, size_t bufferSize) {
+void receiveData(SOCKET sock, char* buffer, size_t bufferSize)
+{
     int valread = recv(sock, buffer, bufferSize, 0);
-    if (valread == SOCKET_ERROR) {
+    if (valread == SOCKET_ERROR)
+    {
         std::cerr << "Recv error: " << WSAGetLastError() << std::endl;
-    } else {
+    }
+    else
+    {
         buffer[valread] = '\0';
         std::cout << "Received from server: " << buffer << endl;
     }
 }
 
-void sendData(SOCKET sock, const char* message) {
-    if (send(sock, message, strlen(message), 0) == SOCKET_ERROR) {
+void sendData(SOCKET sock, const char* message)
+{
+    if (send(sock, message, strlen(message), 0) == SOCKET_ERROR)
+    {
         std::cerr << "Send error: " << WSAGetLastError() << std::endl;
     }
 }
 
 
-void CommunicateWithServer(int socket){
+void CommunicateWithServer(int socket)
+{
     char buffer[200];
     //Menerima Pesan dari server untuk memasukkan nama
     receiveData(socket, buffer, 200);
@@ -95,31 +102,38 @@ int main()
     const char* serverIp = "10.252.130.182";
     string ipString;
     int port = 55555;
-    cout << "Selamat datang di alfamaret, selamat belanja" << endl;
-    cout << "Berikut adalah perintah yang bisa anda lakukan ! " << endl;
-    cout << "1. Sambung ke Server" << endl;
-    cout << "2. Keluar"<< endl;
-    cout << "Silahkan masukkan perintah yang ingin anda lakukan : ";
-    int clientConsoleCommand;
-    cin >> clientConsoleCommand;
-    cout << endl;
-    switch(clientConsoleCommand)
+    while(true)
     {
-    case 1:
-        cout << "Masukkan Ip Address : ";
-        cin >> ipString;
-        serverIp = ipString.c_str();
-        cout << "Terasmbung ke server dengan " << serverIp << " dan Port 55555" << endl;
-        ClientStart(serverIp, port);
-        break;
-    case 2:
-        cout << "Terima kasih sudah berbelanja di alfamaret" << endl;
-        return 0;
-        break;
-    default:
-        cout << "Invalid Input " << endl;
+        cout << "Selamat datang di alfamaret, selamat belanja" << endl;
+        cout << "Berikut adalah perintah yang bisa anda lakukan ! " << endl;
+        cout << "1. Sambung ke Server" << endl;
+        cout << "2. Bersihkan Console"<< endl;
+        cout << "3. Keluar"<< endl;
+        cout << "Silahkan masukkan perintah yang ingin anda lakukan : ";
+        int clientConsoleCommand;
+        cin >> clientConsoleCommand;
+        cout << endl;
+        switch(clientConsoleCommand)
+        {
+        case 1:
+            cout << "Masukkan Ip Address : ";
+            cin >> ipString;
+            serverIp = ipString.c_str();
+            cout << "Terasmbung ke server dengan " << serverIp << " dan Port 55555" << endl;
+            ClientStart(serverIp, port);
+            break;
+        case 2:
+            system("cls");
+            break;
+        case 3:
+            cout << "Terima kasih sudah berbelanja di alfamaret" << endl;
+            return 0;
+            break;
+        default:
+            cout << "Invalid Input " << endl;
+        }
     }
-    system("pause");
-
-    return 0;
+//    system("pause");
+//
+//    return 0;
 }

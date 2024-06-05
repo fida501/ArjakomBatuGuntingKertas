@@ -5,3 +5,9 @@
 	<ws2tcpip.h>
 	<limits>
 
+1717614155 source:c:\pertugasan\arjakopm\bgt git\arjakombatuguntingkertas\clientcoba\main.cpp
+	<iostream>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<limits>
+

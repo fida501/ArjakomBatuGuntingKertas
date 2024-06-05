@@ -21,3 +21,15 @@
 1717302624 c:\pertugasan\arjakopm\socket programming\servercoba\include\player.h
 	<string>
 
+1717302617 source:c:\pertugasan\arjakopm\bgt git\arjakombatuguntingkertas\servercoba\src\player.cpp
+	"Player.h"
+
+1717302624 c:\pertugasan\arjakopm\bgt git\arjakombatuguntingkertas\servercoba\include\player.h
+	<string>
+
+1717614232 source:c:\pertugasan\arjakopm\bgt git\arjakombatuguntingkertas\servercoba\main.cpp
+	<iostream>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<thread>
+
